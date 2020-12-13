@@ -1,0 +1,74 @@
+<div class="content-section-b">
+    <div class="container">
+        <div class="row">
+            <div class ="col-lg-4">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Workouts 💪</h2>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <h3>Connecting with God</h3>
+                <ul class = "list-group">
+                    <% @connecting.each do |mission| %>
+                        <li class = "list-group-item">
+                            <%= mission.name %>
+                            - 
+                            <%= mission.points %>
+                            points
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <h3>Getting Close</h3>
+                <ul class = "list-group">
+                    <% @getting_close.each do |mission| %>
+                        <li class = "list-group-item">
+                            <%= mission.name %>
+                            -
+                            <%= mission.points %>
+                            points
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3>Training Up</h3>
+                <ul class = "list-group">
+                    <% @training_up.each do |mission| %>
+                        <li class = "list-group-item">
+                            <%= mission.name %> 
+                            - 
+                            <%= mission.points %>
+                            points
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <h3>Reaching Out</h3>
+                <ul class = "list-group">
+                    <% @reaching_out.each do |mission| %>
+                        <li class = "list-group-item">
+                            <%= mission.name %>
+                            - 
+                            <%= mission.points %>
+                            points
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

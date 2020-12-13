@@ -1,0 +1,196 @@
+<div class="intro-header">
+      <!-- Use this section to display updates at the top. !-->
+<!--      <div id="thinbar">-->
+<!--        <div id="thinbar-content">-->
+<!--          This site is currently undergoing maintenance. Please pardon any interruptions in service.-->
+<!--        </div>-->
+<!--      </div>-->
+
+    <!-- Snow effect. Code source: https://codepen.io/iamjamie/pen/wzbEXG !-->
+    <div class="snow_container">
+      <div class="snow snow--near"></div>
+      <div class="snow snow--near snow--alt"></div>
+
+      <div class="snow snow--mid"></div>
+      <div class="snow snow--mid snow--alt"></div>
+
+      <div class="snow snow--far"></div>
+      <div class="snow snow--far snow--alt"></div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
+                    <h1>Koinonia Core Winter Workout</h1>
+                    <hr class="intro-divider">
+                    <ul class="list-inline intro-social-buttons">
+<!--                        <h3 class="intro-count">-->
+<!--                            <%#= @winner[0] %>:-->
+                            <%#= @winner[1] %>
+<!--                        </h3>-->
+
+                        <h3 class="intro-count">
+                          Freshmen + Seniors: <%=@freshmenSum + @seniorsSum %>
+                        </h3>
+                      <h3 class="intro-count">
+                        Sophomores + Juniors: <%=@sophomoresSum + @juniorsSum %>
+                      </h3>
+                        <%# @points.each do |team| %>
+<!--                            <h4 class="intro-count">-->
+<!--                                <%#= team[0] %>:-->
+                                <%#= team[1] %>
+<!--                            </h4>-->
+                        <%# end %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /.intro-header -->
+
+<!-- Page Content -->
+
+<div class="content-section-a">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">The Challenge</h2>
+              <p class="lead">This winter break, let’s work out our core values together with some friendly competition! The prize: <b>Korean BBQ hosted by Koin House.</b> 🔥</p>
+            </div>
+            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+            	<hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Rules</h2>
+                <ul class="lead">
+                	<li>
+                    Completed a work out? Great! Make your points count by logging it on this website!
+                	</li>
+                    <li>
+                        Upload a photo or video, if possible!
+                    </li>
+                    <li>
+                      For the “Getting Close” challenges, each class can post only once for a single phone call, meetup, video chat, etc.
+                      <ul>
+                        <li>If a two sophomores meet up, that only counts once, not twice.</li>
+                        <li>If a sophomore and junior video chat, each of them can post!</li>
+                      </ul>
+                    </li>
+<!--                    <li>-->
+<!--                      There may be a special element introduced halfway through break... 👀-->
+<!--                    </li>-->
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /.content-section-a -->
+
+<div class="content-section-b">
+    <div class="container">
+        <div class="row">
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+            <h2>Log Completed Workout</h2>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <%= form_for @comment, :html => {:role => 'form'} do |f| %>
+
+                    <div class="col-lg-6">
+                        <%= render 'shared/error_messages' %>
+                        <div class="form-group">
+                            <%= f.label :name, "Name (first and last)" %>
+                            <%= f.text_field :name, { :class => "form-control"} %>
+                        </div>
+
+                        <div class="form-group">
+                            <%= f.label :team %>
+                            <%= f.select :team, options_for_select(["Freshmen", "Sophomores", "Juniors", "Seniors"]), {:prompt => 'Select Team'}, { :class => "form-control" } %>
+                        </div>
+                        <div class="form-group">
+                            <%= f.label :content, "Blurb" %>
+                            <%= f.text_area :content, { :class => "form-control", rows: "5"} %>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <%= f.label :mission_id, "Workout" %>
+
+                            <select class="form-control" name="comment[mission_id]" id="comment_mission_id">
+                                <option value>Select Workout</option>
+                                <optgroup label="Connecting with God">Connecting with God
+                                    <% @cwg.each do |mission| %>
+                                    <option value=<%= mission.id %>><%= mission.name %> - <%= mission.points%> points</option>
+                                    <% end %>
+                                </optgroup>
+                              <optgroup label="Getting Close">Getting Close
+                                <% @gc.each do |mission| %>
+                                  <option value=<%= mission.id %>><%= mission.name %> - <%= mission.points%> points</option>
+                                <% end %>
+                              </optgroup>
+                                <optgroup label="Training Up">Training Up
+                                    <% @tu.each do |mission| %>
+                                    <option value=<%= mission.id %>><%= mission.name %> - <%= mission.points%> points</option>
+                                    <% end %>
+                                </optgroup>
+                                <optgroup label="Reaching Out">Reaching Out
+                                    <% @ro.each do |mission| %>
+                                    <option value=<%= mission.id %>><%= mission.name %> - <%= mission.points%> points</option>
+                                    <% end %>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <%= f.label :avatar, "Upload a Picture (optional)" %>
+                            <%= f.file_field :avatar, { :class => "form-control"} %>
+                        </div>
+
+                        <div class="form-group">
+                            <%= f.label :video, "Upload a Video (optional)" %>
+                            <%= f.file_field :video, { :class => "form-control"} %>
+                        </div>
+                    </div>
+
+                    <%= f.submit "Submit my post", class: "btn btn-primary btn-lg btn-block" %>
+                <% end %>
+            </div>
+        </div>
+    </div>  
+</div>
+
+
+<div class="content-section-a">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-3">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <div class="well">
+                    <h5>Have a comment or want to file a bug? Notify us <a href="https://forms.gle/RZJ6hVC4pBpyibt48">here</a>!</h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+</div>
+
+
+

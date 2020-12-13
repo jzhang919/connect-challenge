@@ -1,0 +1,290 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+
+.topnav {
+    font-size: 14px; 
+}
+
+.lead {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.intro-header {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url('/assets/winter-forest.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.completed-background {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: url('/assets/completed-background.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: -1;
+    opacity: .8;
+}
+
+.completed {
+    padding: 85px 0px;
+}
+
+.intro-message {
+    position: relative;
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+
+.intro-message > h1 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 5em;
+}
+
+.intro-divider {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.intro-message > h3, .intro-count, .intro-message > h4 {
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+}
+
+@media(max-width:767px) {
+    .intro-message {
+        padding-bottom: 15%;
+    }
+
+    .intro-message > h1 {
+        font-size: 3em;
+    }
+
+    ul.intro-social-buttons > li {
+        display: block;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    ul.intro-social-buttons > li:last-child {
+        margin-bottom: 0;
+    }
+
+    .intro-divider {
+        width: 100%;
+    }
+}
+
+.network-name {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.content-section-a {
+    padding: 50px 0;
+    background-color: #f8f8f8;
+}
+
+.content-section-b {
+    padding: 50px 0;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.section-heading {
+    margin-bottom: 30px;
+}
+
+.section-heading-spacer {
+    float: left;
+    width: 200px;
+    border-top: 3px solid #e7e7e7;
+}
+
+#thinbar {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 5px; /* Changes the padding (i.e., space) surrounding the text banner's text */
+  box-sizing:border-box;
+  background-color: #337ab7;
+}
+
+#thinbar-content {
+  color: #ffffff; /* Changes text banner's font color */
+  //font-family: "Komika Axis"; /* Changes the text banner's font */
+  //font-size: 1.5em; /* Changes the text banner's font size */
+  //font-weight: 500; /* Changes the text banner's font thickness */
+  //letter-spacing: 0.05em; /* Changes the space between each letter */
+  margin: 0 auto 0em;
+  text-align: center; /* Moves the text banner text to the left, center, or right -- your preference! */
+  //text-shadow:0 0 10px #004F09; /* Changes the text banner's text shadow */
+
+  //border: 1px solid #000;
+}
+
+.banner {
+    padding: 100px 0;
+    color: #f8f8f8;
+    background: url('/assets/winter-forest.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.banner h2 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 3em;
+}
+
+.banner ul {
+    margin-bottom: 0;
+}
+
+.banner-social-buttons {
+    float: right;
+    margin-top: 0;
+}
+
+@media(max-width:1199px) {
+    ul.banner-social-buttons {
+        float: left;
+        margin-top: 15px;
+    }
+}
+
+@media(max-width:767px) {
+    .banner h2 {
+        margin: 0;
+        text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+        font-size: 3em;
+    }
+
+    ul.banner-social-buttons > li {
+        display: block;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    ul.banner-social-buttons > li:last-child {
+        margin-bottom: 0;
+    }
+}
+
+footer {
+    padding: 50px 0;
+    background-color: #f8f8f8;
+}
+
+p.copyright {
+    margin: 15px 0 0;
+}
+
+
+.all-comments {
+    padding: 0 20px;
+}
+
+// <--------------------->
+
+.flash {
+    position: absolute;
+    z-index: 100;
+    top: 50px;
+    width: 100%;
+}
+
+// <--------------------->
+// Snow effect. Code source: https://codepen.io/iamjamie/pen/wzbEXG
+$c--background: #333;
+$s--near: 10s;
+$s--mid: ($s--near * 2);
+$s--far: ($s--near * 3);
+$ease--out-quad: cubic-bezier(.25,.46,.450,.94);
+
+%on-top {
+  z-index: 100;
+  pointer-events: none;
+}
+
+.snow_container {
+  @extend %on-top;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  //background: $c--background;
+}
+
+.snow {
+  @extend %on-top;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  animation: falling linear infinite both;
+  transform: translate3D(0,-100%,0);
+
+  &--near {
+    animation-duration: $s--near;
+    background-size: contain;
+
+    & + .snow--alt {
+      animation-delay: ($s--near / 2);
+    }
+  }
+
+  &--mid {
+    animation-duration: $s--mid;
+    background-image: url('https://dl6rt3mwcjzxg.cloudfront.net/assets/snow/snow-medium-0b8a5e0732315b68e1f54185be7a1ad9.png');
+    background-size: contain;
+
+    & + .snow--alt {
+      animation-delay: ($s--mid / 2);
+    }
+  }
+
+  &--far {
+    animation-duration: $s--far;
+    background-image: url('https://dl6rt3mwcjzxg.cloudfront.net/assets/snow/snow-small-1ecd03b1fce08c24e064ff8c0a72c519.png');
+    background-size: contain;
+
+    & + .snow--alt {
+      animation-delay: ($s--far / 2);
+    }
+  }
+}
+
+@keyframes falling {
+  0% {
+    transform: translate3D(-7.5%,-100%, 0);
+  }
+
+  100% {
+    transform: translate3D(7.5%,100%, 0);
+  }
+}

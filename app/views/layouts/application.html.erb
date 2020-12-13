@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script charset='UTF-8'>
+        window['adrum-start-time'] = new Date().getTime();
+        (function(config){
+            config.appKey = 'AD-AAB-AAU-ASR';
+            config.adrumExtUrlHttp = 'http://cdn.appdynamics.com';
+            config.adrumExtUrlHttps = 'https://cdn.appdynamics.com';
+            config.beaconUrlHttp = 'http://col.eum-appdynamics.com';
+            config.beaconUrlHttps = 'https://col.eum-appdynamics.com';
+            config.xd = {enable : false};
+            config.spa = {spa2:true};
+        })(window['adrum-config'] || (window['adrum-config'] = {}));
+    </script>
+    <script src='//cdn.appdynamics.com/adrum/adrum-4.5.15.2691.js'></script>
+<!--    <script src="js/bootstrap.min.js"></script>-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Koinonia Core Winter Workout</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('/assets/koin_k_bonw.png') %>
+  </head>
+
+  <body>
+  <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+    <div class="container topnav">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <%= link_to image_tag("/assets/koin_k_bonw.png", :size => "30x30"), root_path, class: "navbar-brand topnav" %>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <%= link_to "Workouts", challenges_path %>
+                </li>
+                <li>
+                    <%= link_to "Completed", completed_path %>
+                </li>
+                <li>
+                    <%= link_to "Stats", stats_path %>
+                </li>
+            </ul>
+        </div>
+    <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+    <div class="flash">
+      <% flash.each do |message_type, message| %>
+        <% if message_type == "success" %>
+          <div class="alert alert-success alert-dismissible" role="alert">
+          <%= message %>
+          </div>
+        <% else %>
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            Error(s) with your submission: <%= message %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+      <%= yield %>
+  </body>
+</html>
